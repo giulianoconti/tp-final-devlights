@@ -14,7 +14,7 @@ export const useFetch = (url) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("Something went wrong ...");
+          throw new Error("Something went wrong...");
         }
       })
       .then((data) => {
