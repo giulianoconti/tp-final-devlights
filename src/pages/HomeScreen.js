@@ -14,7 +14,7 @@ const HomeScreen = () => {
         <nav>
             <ul className="flex justify-between text-xl py-8 px-8 md:px-48 ">
             <li>
-                <img className='w-24' src="https://deckofcardsapi.com/static/img/0C.png" alt="" />
+                <img className='w-24' src="https://deckofcardsapi.com/static/img/0C.png" alt="card" />
             </li>
             <li className="text-eggShell	">
                 <li className='text-right'>Integrantes: Giuliano Conti</li>
