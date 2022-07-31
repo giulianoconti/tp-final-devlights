@@ -24,7 +24,7 @@ export const GameScreen = () => {
   useEffect(() => {
     cards?.forEach((card) => {
       if (card.value === "KING" || card.value === "QUEEN" || card.value === "JACK") card.value = [10];
-      else if (card.value === "ACE") card.value = [1, 11];
+      else if (card.value === "1") card.value = [1, 11];
       else card.value = [parseInt(card.value)];
     });
   }, [cards]);
@@ -420,12 +420,16 @@ export const GameScreen = () => {
   }, [playerValueTotal]);
 
   const getDataFromFirestore = async () => {
+    const dataCards = [];
     try {
       const response = await getFirestore().collection("cards").get();
       if (response.empty) {
         setError("No hay cartas");
       }
-      setCards(response.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      response.forEach((doc) => {
+        dataCards.push(doc.data());
+      });
+      setCards(dataCards);
     } catch (error) {
       setError(error);
     } finally {
@@ -649,6 +653,11 @@ export const GameScreen = () => {
                     <img className="h-64 bg-black rounded-lg" src={card.image} alt={card.value + card.suit} />
                   </div>
                 ))}
+                {dealerCards.length === 1 && (
+                  <div className="-ml-16 md:-ml-24">
+                    <img className="h-64 bg-black rounded-lg" src="backCard.png" alt="backCard.png" />
+                  </div>
+                )}
               </div>
               <div className="flex justify-center -ml-16 md:-ml-24 mt-2 h-6">
                 {dealerCards.length > 0 && (
