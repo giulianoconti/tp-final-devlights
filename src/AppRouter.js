@@ -15,11 +15,11 @@ export const AppRouter = () => {
       <Navbar /> 
         <Routes>
           <Route path="/" element={ <HomeScreen /> } />
-          <Route path="/learn-how-to-play" element={<LearnHowToPlayScreen />} />
-          <Route path="/game" element={<GameScreen />} />
-          {/* <Route path="/game" element={<ApiTest /> } />     */}      
-          <Route path="/contact" element={<ContactScreen />} />
-          <Route path="/about-us" element={<AboutUsScreen />} />
+          <Route path="/aprender-a-jugar" element={<LearnHowToPlayScreen />} />
+          <Route path="/juego" element={<GameScreen />} />
+          {/* <Route path="/juego" element={<ApiTest /> } />     */}      
+          <Route path="/contacto" element={<ContactScreen />} />
+          <Route path="/sobre-nosotros" element={<AboutUsScreen />} />
           <Route path="*" element={ <NotFound404Screen /> } />          
         </Routes>
       <Footer />
