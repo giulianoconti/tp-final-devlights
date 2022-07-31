@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const HomeScreen = () => {
   const navigate = useNavigate();
   function onClick() {
-    navigate("/learn-how-to-play");
+    navigate("/aprender-a-jugar");
   }
 
   return (
