@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import Loading from '../components/Loading'
 import { getFirestore } from '../firebase'
 
 const ApiTest = () => {
@@ -44,7 +45,7 @@ const ApiTest = () => {
   }, [])
 
   if( isLoading ) {
-    return <p>Cargando</p>
+    return <Loading />
   } else if ( error ) {
     return <p>Ha habido un error {error.message}</p>
   }else{
