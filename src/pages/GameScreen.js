@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getFirestore } from "../firebase";
 import { Loading } from "../components/Loading";
+import backCard from "../images/backCard.png";
 
 export const GameScreen = () => {
   const [cards, setCards] = useState([]);
@@ -666,7 +667,7 @@ export const GameScreen = () => {
                   <div className="-ml-16 sm:-ml-24">
                     <img
                       className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
-                      src="backCard.png"
+                      src={backCard}
                       alt="backCard.png"
                     />
                   </div>
