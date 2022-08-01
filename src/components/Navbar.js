@@ -17,12 +17,14 @@ export const Navbar = () => {
       <nav className="fixed z-50 h-16 w-full bg-hunterGreen text-eggShell items-center py-3">
         <div className="flex flex-wrap justify-between items-center">
           <Link className="flex items-center pl-4 md:w-36" to="/">
-            <img src="logo192.png" className="mr-3 h-9" alt="Logo" />
+            <img src="logo192.png" className="mr-3 h-9 w-9" alt="Logo" />
             <span className="text-xl font-semibold">Blackjack</span>
           </Link>
 
           <div className="flex h-6 pr-4 md:hidden">
             <button
+              name="menu"
+              aria-label="Menu"
               data-collapse-toggle="mobile-menu-3"
               aria-controls="mobile-menu-3"
               aria-expanded="false"

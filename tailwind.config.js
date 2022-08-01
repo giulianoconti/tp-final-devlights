@@ -14,7 +14,7 @@ module.exports = {
         mayGreen: '#6A994E',
         androidGreen: '#A7C957',
         eggShell: '#F2E8CF',
-        bittersweetShimmer: '#BC4749',     
+        bittersweetShimmer: '#de4c4e',     
       },
     },
   },
