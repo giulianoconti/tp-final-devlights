@@ -44,7 +44,10 @@ export const GameScreen = () => {
   useEffect(() => {
     if (dealerCards.length > 1) {
       // if dealer has less than 17, add a card
-      if (dealerValueTotal[0] < 17 && dealerValueTotal[1] < 17 && dealerValueTotal[0] > 0 && dealerValueTotal[1] > 0) {
+      if (
+        (dealerValueTotal[0] < 17 && dealerValueTotal[1] < 17) ||
+        (dealerValueTotal[0] < 17 && dealerValueTotal[1] > 21)
+      ) {
         setTimeout(() => {
           dealerHit();
         }, 500);
