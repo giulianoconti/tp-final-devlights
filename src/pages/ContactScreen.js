@@ -19,7 +19,11 @@ export const ContactScreen = () => {
     event.preventDefault();
     const templateId = 'template_zc5le4r';
     const serviceId = 'default_service';
-    sendMessage(serviceId, templateId, {message: message, from_name: name, reply_to: email})
+    if (message !="" && name !="" && email !="" ) {
+      sendMessage(serviceId, templateId, {message: message, from_name: name, reply_to: email})  
+    } else {
+      console.log("Debes completar todos los campos");
+    }
   }
 
   function sendMessage(serviceId, templateId, variables) {
@@ -45,8 +49,6 @@ export const ContactScreen = () => {
         <p className="mt-3">Completa los siguientes datos:</p>
 
         <form className="mt-10" >
-
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" /> 
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="relative z-0">
               <input type="text" name="name" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder=" " onChange={onNameChange}/>
@@ -63,6 +65,7 @@ export const ContactScreen = () => {
           </div>
           <button type="submit" className="mt-5 rounded-md bg-black px-10 py-2 text-white" onClick={handleClickSubmit}>Enviar</button>
         </form>
+        
       </div>
     </div>  
   </>
