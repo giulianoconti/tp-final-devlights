@@ -95,7 +95,7 @@ c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"
 
   return (
     <>
-      <div className="bg-gray-800 flex flex-col min-h-screen items-center justify-start">
+      <div className="bg-gray-800 flex flex-col min-h-[90vh] items-center justify-start">
         <div className="container">
           <div className="p-2">
             <h3 className="font-medium leading-tight text-3xl my-2 text-bittersweetShimmer">Reglas del blackjack</h3>
