@@ -3,7 +3,7 @@ export const Loading = () => {
     <div className="text-center bg-gray-800 min-h-[90vh] flex flex-col items-center justify-center">
       <div className="inline h-16 w-16 animate-[spin_4s_linear_infinite]">
         <svg
-          className="inline h-16 w-16 animate-pulse animate-[spin_2s_linear_infinite]"
+          className="inline h-16 w-16 animate-pulse"
           version="1.1"
           id="Capa_1"
           x="0px"
