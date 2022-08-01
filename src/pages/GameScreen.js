@@ -648,25 +648,29 @@ export const GameScreen = () => {
           <div className="flex justify-center h-6 my-2">
             {message && <h3 className=" bg-red-600 px-2 text-white rounded">{message}</h3>}
           </div>
-          <div className="flex h-72 justify-center items-center pl-16 md:pl-24">
+          <div className="flex h-48 sm:h-72 justify-center items-center pl-16 sm:pl-24">
             <div className="flex flex-col justify-center">
               <div className="flex justify-center h-full">
                 {dealerCards?.map((card, index) => (
-                  <div className="-ml-16 md:-ml-24" key={index}>
+                  <div className="-ml-16 sm:-ml-24" key={index}>
                     <img
-                      className="h-64 w-[184.25px] bg-black rounded-lg"
+                      className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
                       src={card.image}
                       alt={card.value + card.suit}
                     />
                   </div>
                 ))}
                 {dealerCards.length === 1 && (
-                  <div className="-ml-16 md:-ml-24">
-                    <img className="h-64 w-[184.25px] bg-black rounded-lg" src="backCard.png" alt="backCard.png" />
+                  <div className="-ml-16 sm:-ml-24">
+                    <img
+                      className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
+                      src="backCard.png"
+                      alt="backCard.png"
+                    />
                   </div>
                 )}
               </div>
-              <div className="flex justify-center -ml-16 md:-ml-24 mt-2 h-6">
+              <div className="flex justify-center -ml-16 sm:-ml-24 mt-2 h-6">
                 {dealerCards.length > 0 && (
                   <h2 className="bg-black text-white rounded px-2">
                     {dealerValueTotal[0]}
@@ -680,7 +684,7 @@ export const GameScreen = () => {
           </div>
 
           <div
-            className={`flex h-72 items-center pl-16 md:pl-24 mt-6 ${
+            className={`flex h-48 sm:h-72 items-center pl-16 sm:pl-24 mt-6 ${
               playerCardsSplitted?.length > 0 ? "justify-between" : "justify-center"
             }`}
           >
@@ -688,7 +692,7 @@ export const GameScreen = () => {
               <div className="flex flex-col mr-32">
                 <div className="flex justify-center">
                   {playerCardsSplitted?.map((card, index) => (
-                    <div className="-ml-16 md:-ml-24" key={index}>
+                    <div className="-ml-16 sm:-ml-24" key={index}>
                       <img
                         className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
                         src={card.image}
@@ -697,7 +701,7 @@ export const GameScreen = () => {
                     </div>
                   ))}
                 </div>
-                <div className="flex justify-center -ml-16 md:-ml-24 mt-2 h-6">
+                <div className="flex justify-center -ml-16 sm:-ml-24 mt-2 h-6">
                   <h2 className="bg-black text-white rounded px-2">
                     {playerValueTotalSplitted[0]}
                     {playerValueTotalSplitted[0] !== playerValueTotalSplitted[1] &&
@@ -711,20 +715,16 @@ export const GameScreen = () => {
             <div className="flex flex-col">
               <div className="flex justify-center">
                 {playerCards?.map((card, index) => (
-                  <div className="-ml-16 md:-ml-24" key={index}>
+                  <div className="-ml-16 sm:-ml-24" key={index}>
                     <img
-                      className={`${
-                        playerCardsSplitted.length > 0
-                          ? "h-40 w-[115.16px] sm:h-64 sm:w-[184.25px]"
-                          : "h-64 w-[184.25px] sm:h-64 sm:w-[184.25px]"
-                      } bg-black rounded-lg`}
+                      className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
                       src={card.image}
                       alt={card.value + card.suit}
                     />
                   </div>
                 ))}
               </div>
-              <div className="flex justify-center -ml-16 md:-ml-24 mt-2 h-6">
+              <div className="flex justify-center -ml-16 sm:-ml-24 mt-2 h-6">
                 {playerCards.length > 0 && (
                   <h2 className="bg-black text-white px-2 rounded">
                     {playerValueTotal[0]}
@@ -737,7 +737,7 @@ export const GameScreen = () => {
             </div>
           </div>
 
-          <div className="flex justify-center my-2 h-10">
+          <div className="flex justify-center my-2 h-5 sm:h-10">
             {playerCards?.length > 0 && dealerCards?.length < 2 && (
               <>
                 <div className="w-16 sm:w-24 h-full mx-0.5 sm:mx-2">
@@ -800,15 +800,18 @@ export const GameScreen = () => {
             )}
           </div>
 
-          <div className="flex justify-between min-h-[48px] py-2">
-            <div className="flex flex-wrap justify-center bg-white w-36 min-w-[74px] min-h-[48px] rounded">
-              <p className="text-center m-auto font-bold">SALDO: ${balance}</p>
+          <div className="flex justify-between min-h-[72px] sm:min-h-[48px] my-2">
+            <div className="flex justify-center items-center bg-white w-12 sm:w-36 min-w-[74px] min-h-[72px] sm:min-h-[48px] rounded">
+              <div className="flex flex-wrap justify-center items-center m-auto">
+                <p className="text-center font-bold text-xs sm:text-base w-full sm:w-auto">SALDO:</p>
+                <p className="text-center font-bold text-xs sm:text-base w-full sm:w-auto">${balance}</p>
+              </div>
             </div>
             {playerCards?.length === 0 && (
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap w-32 sm:w-72">
                 <div className="flex justify-center items-center mx-auto">
                   <button
-                    className="bg-white font-bold rounded-full w-10 h-10 m-1 border-[6px] border-gray-400 hover:border-gray-500"
+                    className="bg-white border-gray-400 hover:border-gray-500 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 sm:m-1 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="1"
                     onClick={putBalance}
                   >
@@ -818,7 +821,7 @@ export const GameScreen = () => {
 
                 <div className="flex justify-center items-center mx-auto">
                   <button
-                    className="bg-white font-bold rounded-full w-10 h-10 m-1 border-[6px] border-red-500 hover:border-red-700"
+                    className="bg-white border-red-500 hover:border-red-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 sm:m-1 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="5"
                     onClick={putBalance}
                   >
@@ -827,7 +830,7 @@ export const GameScreen = () => {
                 </div>
                 <div className="flex justify-center items-center mx-auto">
                   <button
-                    className="bg-white font-bold rounded-full w-10 h-10 m-1 border-[6px] border-green-500 hover:border-green-700"
+                    className="bg-white border-green-500 hover:border-green-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 sm:m-1 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="10"
                     onClick={putBalance}
                   >
@@ -836,7 +839,7 @@ export const GameScreen = () => {
                 </div>
                 <div className="flex justify-center items-center mx-auto">
                   <button
-                    className="bg-white font-bold rounded-full w-10 h-10 m-1 border-[6px] border-blue-500 hover:border-blue-700"
+                    className="bg-white border-blue-500 hover:border-blue-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 sm:m-1 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="25"
                     onClick={putBalance}
                   >
@@ -845,7 +848,7 @@ export const GameScreen = () => {
                 </div>
                 <div className="flex justify-center items-center mx-auto">
                   <button
-                    className="bg-white font-bold rounded-full w-10 h-10 m-1 border-[6px] border-orange-500 hover:border-orange-700"
+                    className="bg-white border-orange-500 hover:border-orange-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 sm:m-1 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="50"
                     onClick={putBalance}
                   >
@@ -854,7 +857,7 @@ export const GameScreen = () => {
                 </div>
                 <div className="flex justify-center items-center mx-auto">
                   <button
-                    className="bg-white font-bold rounded-full w-10 h-10 m-1 border-[6px] border-gray-700 hover:border-gray-900"
+                    className="bg-white border-gray-700 hover:border-gray-900 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 sm:m-1 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="100"
                     onClick={putBalance}
                   >
@@ -863,11 +866,14 @@ export const GameScreen = () => {
                 </div>
               </div>
             )}
-            <div className="flex flex-wrap justify-center bg-white w-36 min-w-[74px] min-h-[48px] rounded">
-              <p className="text-center m-auto font-bold">APUESTA: ${bet}</p>
+            <div className="flex flex-wrap justify-between bg-white w-12 sm:w-36 min-w-[74px] min-h-[72px] sm:min-h-[48px] rounded">
+              <div className="flex flex-wrap justify-center items-center m-auto">
+                <p className="text-center font-bold text-xs sm:text-base w-full sm:w-auto">APUESTA: </p>
+                <p className="text-center font-bold text-xs sm:text-base w-full sm:w-auto"> ${bet}</p>
+              </div>
               {playerCards.length < 1 && (
                 <button
-                  className="bg-red-500 hover:bg-red-700 rounded-full w-6 h-6 m-auto font-bold"
+                  className="bg-red-500 hover:bg-red-700 text-white rounded-full w-6 h-6 m-auto font-bold"
                   onClick={cancelBet}
                 >
                   X

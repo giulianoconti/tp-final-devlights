@@ -23,6 +23,8 @@ export const Navbar = () => {
 
           <div className="flex h-6 pr-4 md:hidden">
             <button
+              name="menu"
+              aria-label="Menu"
               data-collapse-toggle="mobile-menu-3"
               aria-controls="mobile-menu-3"
               aria-expanded="false"
