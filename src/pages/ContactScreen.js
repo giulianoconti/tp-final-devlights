@@ -77,7 +77,7 @@ export const ContactScreen = () => {
             Tu mensaje se ha enviado correctamente, recibirás respuesta a la brevedad. 
           </div>
 
-          <button type="submit" className="mt-5 rounded-md bg-black px-10 py-2 text-white" onClick={handleClickSubmit}>Enviar</button>
+          <button type="submit" className="mt-5 rounded-md bg-black px-10 py-2 text-white" disabled={disabledInput} onClick={handleClickSubmit}>Enviar</button>
         </form>
 
       </div>
