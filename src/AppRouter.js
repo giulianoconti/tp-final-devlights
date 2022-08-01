@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
-import { ContactScreen } from "./pages/ContactScreen";
+import { HomeScreen } from "./pages/HomeScreen";
 import { LearnHowToPlayScreen } from "./pages/LearnHowToPlayScreen";
 import { GameScreen } from "./pages/GameScreen";
-import AboutUsScreen from "./pages/Nosotros";
-import { HomeScreen } from "./pages/HomeScreen";
+import { ContactScreen } from "./pages/ContactScreen";
+import { AboutUsScreen } from "./pages/AboutUsScreen";
+import { Footer } from "./components/Footer";
 import NotFound404Screen from "./pages/NotFound404Screen";
 
 export const AppRouter = () => {
