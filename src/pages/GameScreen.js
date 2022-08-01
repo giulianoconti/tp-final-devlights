@@ -653,12 +653,16 @@ export const GameScreen = () => {
               <div className="flex justify-center h-full">
                 {dealerCards?.map((card, index) => (
                   <div className="-ml-16 md:-ml-24" key={index}>
-                    <img className="h-64 bg-black rounded-lg" src={card.image} alt={card.value + card.suit} />
+                    <img
+                      className="h-64 w-[184.25px] bg-black rounded-lg"
+                      src={card.image}
+                      alt={card.value + card.suit}
+                    />
                   </div>
                 ))}
                 {dealerCards.length === 1 && (
                   <div className="-ml-16 md:-ml-24">
-                    <img className="h-64 bg-black rounded-lg" src="backCard.png" alt="backCard.png" />
+                    <img className="h-64 w-[184.25px] bg-black rounded-lg" src="backCard.png" alt="backCard.png" />
                   </div>
                 )}
               </div>
@@ -685,7 +689,11 @@ export const GameScreen = () => {
                 <div className="flex justify-center">
                   {playerCardsSplitted?.map((card, index) => (
                     <div className="-ml-16 md:-ml-24" key={index}>
-                      <img className="h-40 sm:h-64 bg-black rounded-lg" src={card.image} alt={card.value + card.suit} />
+                      <img
+                        className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
+                        src={card.image}
+                        alt={card.value + card.suit}
+                      />
                     </div>
                   ))}
                 </div>
@@ -706,7 +714,9 @@ export const GameScreen = () => {
                   <div className="-ml-16 md:-ml-24" key={index}>
                     <img
                       className={`${
-                        playerCardsSplitted.length > 0 ? "h-40 sm:h-64" : "h-64 sm:h-64"
+                        playerCardsSplitted.length > 0
+                          ? "h-40 w-[115.16px] sm:h-64 sm:w-[184.25px]"
+                          : "h-64 w-[184.25px] sm:h-64 sm:w-[184.25px]"
                       } bg-black rounded-lg`}
                       src={card.image}
                       alt={card.value + card.suit}
@@ -777,7 +787,7 @@ export const GameScreen = () => {
                   )}
                 </div>
                 <div className="w-16 sm:w-24 h-full mx-0.5 sm:mx-2">
-                  {playerValueTotal[0] < 22 && (
+                  {playerValueTotal[0] < 22 && playerCards.length > 1 && (
                     <button
                       className="bg-red-600 hover:bg-red-700 text-white shadow shadow-black h-full font-bold rounded w-16 sm:w-24 text-xs sm:text-base"
                       onClick={playerStand}
