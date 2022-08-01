@@ -104,7 +104,7 @@ export const ContactScreen = () => {
           </div>
 
           <div
-            className={`bg-green-100 rounded-lg py-5 px-6 mb-3 text-base text-green-700 inline-flex items-center w-full ${
+            className={`bg-green-100 rounded-lg py-5 px-6 my-3 text-base text-green-700 inline-flex items-center w-full ${
               !showSuccesSendMessage && "hidden"
             }`}
             role="alert"
