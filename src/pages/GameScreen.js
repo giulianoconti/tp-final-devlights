@@ -617,17 +617,23 @@ export const GameScreen = () => {
     setPlayerDoublePressed(false);
   };
 
-  const putBalance = ({ target: { value } }) => {
+  const putBet = ({ target: { value } }) => {
     const valueInt = parseInt(value);
     if (balance >= valueInt) {
       setBalance(balance - valueInt);
       setBet(bet + valueInt);
+    } else if (balance === 0 && bet === 0) {
+      setMessage("Recargue saldo para jugar");
     }
   };
 
   const cancelBet = () => {
     setBalance(balance + bet);
     setBet(0);
+  };
+
+  const topUpBalance = () => {
+    setBalance(1000);
   };
 
   if (isLoading) return <Loading />;
@@ -808,6 +814,43 @@ export const GameScreen = () => {
               <div className="flex flex-wrap justify-center items-center m-auto">
                 <p className="text-center font-bold text-xs sm:text-base w-full sm:w-auto mr-1">SALDO:</p>
                 <p className="text-center font-bold text-xs sm:text-base w-full sm:w-auto">${balance}</p>
+                {balance === 0 && bet === 0 && (
+                  <button className="w-6 h-6 sm:ml-2 animate-pulse hover:animate-none" onClick={topUpBalance}>
+                    <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 511.883 511.883">
+                      <path
+                        className="fill-rose-300"
+                        d="M238.913,511.883c-76.967,0-139.359-62.393-139.359-139.359S161.946,233.15,238.913,233.15c76.982,0,139.375,62.407,139.375,139.374S315.895,511.883,238.913,511.883z"
+                      />
+                      <path
+                        className="fill-rose-300"
+                        d="M294.12,356.012h59.533V56.721c0-16.418-13.357-29.759-29.76-29.759c-16.418,0-29.773,13.341-29.773,29.759L294.12,356.012L294.12,356.012z"
+                      />
+                      <path
+                        className="fill-rose-300"
+                        d="M229.274,329.065h59.518V29.759C288.792,13.356,275.436,0,259.034,0c-16.419,0-29.76,13.355-29.76,29.759V329.065z"
+                      />
+                      <path
+                        className="fill-rose-300"
+                        d="M164.414,356.012h59.518V56.721c0-16.418-13.356-29.759-29.759-29.759c-16.418,0-29.759,13.341-29.759,29.759V356.012z"
+                      />
+                      <path
+                        className="fill-rose-300"
+                        d="M99.554,372.524h59.518V110.631c0-16.418-13.341-29.759-29.759-29.759c-16.402,0-29.759,13.341-29.759,29.759V372.524z"
+                      />
+
+                      <rect x="31.882" y="106.132" className="fill-green-500" width="448.12" height="234.73" />
+                      <path
+                        className="fill-green-300"
+                        d="M95.898,138.14h320.083c0,17.684,14.326,32.009,32.01,32.009v106.694c-17.684,0-32.01,14.324-32.01,32.008H95.898c0-17.684-14.325-32.008-32.008-32.008V170.149C81.574,170.149,95.898,155.824,95.898,138.14z"
+                      />
+                      <circle className="fill-green-500" cx="255.94" cy="223.492" r="53.35" />
+                      <path
+                        className="fill-rose-300"
+                        d="M436.055,289.45l0.016-0.016c4.857-9.451,5.764-20.229,2.531-30.353c-3.25-10.123-10.232-18.387-19.684-23.261c-5.701-2.937-11.826-4.437-18.199-4.437c-14.98,0-28.557,8.279-35.414,21.589l-71.185,137.97l73.123,34.867l68.797-136.328L436.055,289.45z"
+                      />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
             {playerCards?.length === 0 && (
@@ -816,7 +859,7 @@ export const GameScreen = () => {
                   <button
                     className="bg-white border-gray-400 hover:border-gray-500 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="1"
-                    onClick={putBalance}
+                    onClick={putBet}
                   >
                     1
                   </button>
@@ -826,7 +869,7 @@ export const GameScreen = () => {
                   <button
                     className="bg-white border-red-500 hover:border-red-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="5"
-                    onClick={putBalance}
+                    onClick={putBet}
                   >
                     5
                   </button>
@@ -835,7 +878,7 @@ export const GameScreen = () => {
                   <button
                     className="bg-white border-green-500 hover:border-green-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="10"
-                    onClick={putBalance}
+                    onClick={putBet}
                   >
                     10
                   </button>
@@ -844,7 +887,7 @@ export const GameScreen = () => {
                   <button
                     className="bg-white border-blue-500 hover:border-blue-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="25"
-                    onClick={putBalance}
+                    onClick={putBet}
                   >
                     25
                   </button>
@@ -853,7 +896,7 @@ export const GameScreen = () => {
                   <button
                     className="bg-white border-orange-500 hover:border-orange-700 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="50"
-                    onClick={putBalance}
+                    onClick={putBet}
                   >
                     50
                   </button>
@@ -862,7 +905,7 @@ export const GameScreen = () => {
                   <button
                     className="bg-white border-gray-700 hover:border-gray-900 font-bold rounded-full w-8 sm:w-10 h-8 sm:h-10 m-0.5 text-xs sm:text-base border-4 sm:border-[6px]"
                     value="100"
-                    onClick={putBalance}
+                    onClick={putBet}
                   >
                     100
                   </button>
