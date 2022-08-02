@@ -32,14 +32,17 @@ export const GameScreen = () => {
 
   useEffect(() => {
     calculateValueTotal(dealerCards);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dealerCards]);
 
   useEffect(() => {
     calculateValueTotal(playerCards);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerCards]);
 
   useEffect(() => {
     calculateValueTotal(playerCardsSplitted);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerCardsSplitted]);
 
   useEffect(() => {
@@ -404,6 +407,7 @@ export const GameScreen = () => {
         }
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dealerValueTotal]);
 
   useEffect(() => {
@@ -421,6 +425,7 @@ export const GameScreen = () => {
     } else if (playerValueTotal[0] < 22 && playerDoublePressed) {
       dealerHit();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerValueTotal]);
 
   const getDataFromFirestore = async () => {
@@ -657,13 +662,13 @@ export const GameScreen = () => {
               <h3 className="bg-red-600 px-2 text-white flex items-center rounded text-xs sm:text-base">{message}</h3>
             )}
           </div>
-          <div className="flex h-44 sm:h-72 justify-center items-center pl-16 sm:pl-24">
+          <div className="flex h-44 sm:h-[26vh] justify-center items-center pl-16 sm:pl-24">
             <div className="flex flex-col justify-center">
               <div className="flex justify-center h-full">
                 {dealerCards?.map((card, index) => (
                   <div className="-ml-16 sm:-ml-24" key={index}>
                     <img
-                      className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
+                      className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={card.image}
                       alt={card.value + card.suit}
                     />
@@ -672,14 +677,14 @@ export const GameScreen = () => {
                 {dealerCards.length === 1 && (
                   <div className="-ml-16 sm:-ml-24">
                     <img
-                      className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
+                      className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={backCard}
                       alt="backCard.png"
                     />
                   </div>
                 )}
               </div>
-              <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-2 h-4 sm:h-6">
+              <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-[0.5vh] h-4 sm:h-6">
                 {dealerCards.length > 0 && (
                   <h2 className="bg-black text-white text-xs sm:text-base rounded px-2">
                     {dealerValueTotal[0]}
@@ -693,7 +698,7 @@ export const GameScreen = () => {
           </div>
 
           <div
-            className={`flex h-44 sm:h-72 items-center pl-16 sm:pl-24 mt-2 sm:mt-6 ${
+            className={`flex h-44 sm:h-[26vh] items-center pl-16 sm:pl-24 mt-2 sm:mt-6 ${
               playerCardsSplitted?.length > 0 ? "justify-between" : "justify-center"
             }`}
           >
@@ -703,14 +708,14 @@ export const GameScreen = () => {
                   {playerCardsSplitted?.map((card, index) => (
                     <div className="-ml-16 sm:-ml-24" key={index}>
                       <img
-                        className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
+                        className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                         src={card.image}
                         alt={card.value + card.suit}
                       />
                     </div>
                   ))}
                 </div>
-                <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-2 h-4 sm:h-6">
+                <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-[0.5vh] h-4 sm:h-6">
                   <h2 className="bg-black text-white text-xs sm:text-base rounded px-2">
                     {playerValueTotalSplitted[0]}
                     {playerValueTotalSplitted[0] !== playerValueTotalSplitted[1] &&
@@ -726,14 +731,14 @@ export const GameScreen = () => {
                 {playerCards?.map((card, index) => (
                   <div className="-ml-16 sm:-ml-24" key={index}>
                     <img
-                      className="h-40 w-[115.16px] sm:h-64 sm:w-[184.25px] bg-black rounded-lg"
+                      className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={card.image}
                       alt={card.value + card.suit}
                     />
                   </div>
                 ))}
               </div>
-              <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-2 h-4 sm:h-6">
+              <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-[0.5vh] h-4 sm:h-6">
                 {playerCards.length > 0 && (
                   <h2 className="bg-black text-white text-xs sm:text-base rounded px-2">
                     {playerValueTotal[0]}
@@ -746,7 +751,7 @@ export const GameScreen = () => {
             </div>
           </div>
 
-          <div className="flex justify-center my-2 h-5 sm:h-10">
+          <div className="flex justify-center my-2 h-5 sm:h-[4vh] min-h-[20px] max-h-[40px]">
             {playerCards?.length > 0 && dealerCards?.length < 2 && (
               <>
                 <div className="w-16 sm:w-24 h-full mx-0.5 sm:mx-2">
@@ -809,7 +814,7 @@ export const GameScreen = () => {
             )}
           </div>
 
-          <div className="flex justify-between min-h-[72px] sm:min-h-[48px] sm:my-2">
+          <div className="flex justify-between min-h-[72px] sm:min-h-[48px] sm:my-[0.5vh]">
             <div className="flex justify-center items-center bg-white w-12 sm:w-40 min-w-[74px] min-h-[72px] sm:min-h-[48px] rounded-tr sm:rounded">
               <div className="flex flex-wrap justify-center items-center m-auto">
                 <p className="text-center font-bold text-xs sm:text-base w-full sm:w-auto mr-1">SALDO:</p>
