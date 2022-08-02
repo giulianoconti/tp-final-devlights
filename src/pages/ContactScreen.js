@@ -131,6 +131,7 @@ export const ContactScreen = () => {
             <button
               type="submit"
               className="bg-black text-eggShell hover:text-white rounded-md px-10 py-2"
+              disabled={disabledInput}
               onClick={handleClickSubmit}
             >
               Enviar
