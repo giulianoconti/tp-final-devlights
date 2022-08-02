@@ -662,11 +662,11 @@ export const GameScreen = () => {
               <h3 className="bg-red-600 px-2 text-white flex items-center rounded text-xs sm:text-base">{message}</h3>
             )}
           </div>
-          <div className="flex h-44 sm:h-[26vh] justify-center items-center pl-16 sm:pl-24">
+          <div className="flex h-44 sm:h-[26vh] justify-center items-center pl-24">
             <div className="flex flex-col justify-center">
               <div className="flex justify-center h-full">
                 {dealerCards?.map((card, index) => (
-                  <div className="-ml-16 sm:-ml-24" key={index}>
+                  <div className="-ml-24" key={index}>
                     <img
                       className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={card.image}
@@ -675,7 +675,7 @@ export const GameScreen = () => {
                   </div>
                 ))}
                 {dealerCards.length === 1 && (
-                  <div className="-ml-16 sm:-ml-24">
+                  <div className="-ml-24">
                     <img
                       className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={backCard}
@@ -684,7 +684,7 @@ export const GameScreen = () => {
                   </div>
                 )}
               </div>
-              <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-[0.5vh] h-4 sm:h-6">
+              <div className="flex justify-center -ml-24 sm:mt-[0.5vh] h-4 sm:h-6">
                 {dealerCards.length > 0 && (
                   <h2 className="bg-black text-white text-xs sm:text-base rounded px-2">
                     {dealerValueTotal[0]}
@@ -698,7 +698,7 @@ export const GameScreen = () => {
           </div>
 
           <div
-            className={`flex h-44 sm:h-[26vh] items-center pl-16 sm:pl-24 mt-2 sm:mt-6 ${
+            className={`flex h-44 sm:h-[26vh] items-center pl-24 mt-2 sm:mt-6 ${
               playerCardsSplitted?.length > 0 ? "justify-between" : "justify-center"
             }`}
           >
@@ -706,7 +706,7 @@ export const GameScreen = () => {
               <div className="flex flex-col mr-32">
                 <div className="flex justify-center">
                   {playerCardsSplitted?.map((card, index) => (
-                    <div className="-ml-16 sm:-ml-24" key={index}>
+                    <div className="-ml-24" key={index}>
                       <img
                         className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                         src={card.image}
@@ -729,7 +729,7 @@ export const GameScreen = () => {
             <div className="flex flex-col">
               <div className="flex justify-center">
                 {playerCards?.map((card, index) => (
-                  <div className="-ml-16 sm:-ml-24" key={index}>
+                  <div className="-ml-24" key={index}>
                     <img
                       className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={card.image}
@@ -738,7 +738,7 @@ export const GameScreen = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex justify-center -ml-16 sm:-ml-24 sm:mt-[0.5vh] h-4 sm:h-6">
+              <div className="flex justify-center -ml-24 sm:mt-[0.5vh] h-4 sm:h-6">
                 {playerCards.length > 0 && (
                   <h2 className="bg-black text-white text-xs sm:text-base rounded px-2">
                     {playerValueTotal[0]}
