@@ -9,3 +9,17 @@ body {
 .active {
   color: rgb(255, 255, 255);
 }
+
+@media (min-width: 640px) {
+  .height-img-card {
+    height: 152px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  @media screen and (max-height: 490px), screen and (min-height: 640px) {
+    .height-img-card {
+      height: 24vh;
+    }
+  }
+}

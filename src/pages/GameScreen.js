@@ -15,12 +15,24 @@ export const GameScreen = () => {
   const [playerValueTotalSplitted, setPlayerValueTotalSplitted] = useState([0, 0]);
   const [message, setMessage] = useState("");
   const [playerDoublePressed, setPlayerDoublePressed] = useState(false);
-  const [balance, setBalance] = useState(1000);
-  const [bet, setBet] = useState(0);
+  const [balance, setBalance] = useState(
+    parseInt(localStorage.getItem("balance")) >= 0 ? parseInt(localStorage.getItem("balance")) : 1000
+  );
+  const [bet, setBet] = useState(
+    parseInt(localStorage.getItem("bet")) >= 0 ? parseInt(localStorage.getItem("bet")) : 0
+  );
 
   useEffect(() => {
     getDataFromFirestore();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("balance", balance);
+  }, [balance]);
+
+  useEffect(() => {
+    localStorage.setItem("bet", bet);
+  }, [bet]);
 
   useEffect(() => {
     cards?.forEach((card) => {
@@ -32,17 +44,17 @@ export const GameScreen = () => {
 
   useEffect(() => {
     calculateValueTotal(dealerCards);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dealerCards]);
 
   useEffect(() => {
     calculateValueTotal(playerCards);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerCards]);
 
   useEffect(() => {
     calculateValueTotal(playerCardsSplitted);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerCardsSplitted]);
 
   useEffect(() => {
@@ -407,7 +419,7 @@ export const GameScreen = () => {
         }
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dealerValueTotal]);
 
   useEffect(() => {
@@ -425,7 +437,7 @@ export const GameScreen = () => {
     } else if (playerValueTotal[0] < 22 && playerDoublePressed) {
       dealerHit();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerValueTotal]);
 
   const getDataFromFirestore = async () => {
@@ -476,6 +488,7 @@ export const GameScreen = () => {
       dealerHit(cards);
       playerHitTwoCards(cards);
       setMessage("");
+      localStorage.setItem("bet", 0);
     } else {
       setMessage("Por favor ingrese una apuesta");
     }
@@ -629,6 +642,8 @@ export const GameScreen = () => {
       setBet(bet + valueInt);
     } else if (balance === 0 && bet === 0) {
       setMessage("Recargue saldo para jugar");
+    } else if (balance < valueInt) {
+      setMessage("No tienes suficiente dinero para apostar");
     }
   };
 
@@ -668,7 +683,7 @@ export const GameScreen = () => {
                 {dealerCards?.map((card, index) => (
                   <div className="-ml-24" key={index}>
                     <img
-                      className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
+                      className="h-40 height-img-card max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={card.image}
                       alt={card.value + card.suit}
                     />
@@ -677,7 +692,7 @@ export const GameScreen = () => {
                 {dealerCards.length === 1 && (
                   <div className="-ml-24">
                     <img
-                      className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
+                      className="h-40 height-img-card max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                       src={backCard}
                       alt="backCard.png"
                     />
@@ -698,17 +713,17 @@ export const GameScreen = () => {
           </div>
 
           <div
-            className={`flex h-44 sm:h-[26vh] items-center pl-24 mt-2 sm:mt-6 ${
-              playerCardsSplitted?.length > 0 ? "justify-between" : "justify-center"
+            className={`flex h-44 sm:h-[26vh] items-center sm:pl-24 mt-2 sm:mt-6 ${
+              playerCardsSplitted?.length > 0 ? "justify-between pl-20 sm:mx-12" : "justify-center pl-24"
             }`}
           >
             {playerCardsSplitted.length > 0 && (
-              <div className="flex flex-col mr-32">
+              <div className="flex flex-col mr-16 sm:mr-32">
                 <div className="flex justify-center">
                   {playerCardsSplitted?.map((card, index) => (
-                    <div className="-ml-24" key={index}>
+                    <div className={`-ml-20 sm:-ml-24 ${dealerCards.length < 2 && "opacity-40"}`} key={index}>
                       <img
-                        className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
+                        className="h-32 height-img-card max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
                         src={card.image}
                         alt={card.value + card.suit}
                       />
@@ -729,9 +744,11 @@ export const GameScreen = () => {
             <div className="flex flex-col">
               <div className="flex justify-center">
                 {playerCards?.map((card, index) => (
-                  <div className="-ml-24" key={index}>
+                  <div className={`${playerCardsSplitted.length > 0 ? "-ml-20" : "-ml-24"} sm:-ml-24`} key={index}>
                     <img
-                      className="h-40 sm:h-[24vh] max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg"
+                      className={`${
+                        playerCardsSplitted.length > 0 ? "h-32" : "h-40"
+                      } height-img-card max-h-[314px] max-w-[226px] w-auto bg-black rounded-lg`}
                       src={card.image}
                       alt={card.value + card.suit}
                     />

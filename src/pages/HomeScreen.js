@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import svgQR from "../images/QR.svg";
 
 export const HomeScreen = () => {
   return (
@@ -23,17 +24,13 @@ export const HomeScreen = () => {
               </div>
             </div>
           </div>
-          <ul className="text-eggShell text-3xl sm:text-xl text-center sm:text-right sm:ml-auto w-full sm:w-auto">
-            <li className="flex flex-col sm:flex-row">
-              <span className="mr-0 sm:mr-1 text-5xl sm:text-xl mb-5 sm:mb-0">Integrantes:</span>
-              <span className="w-full">Giuliano Conti</span>
-            </li>
-            <li>Martin Rotelli</li>
-            <li>Juan Fernandez</li>
-          </ul>
+
+          <div className="w-full sm:w-auto">
+            <img className="w-64 h-[325.7px] mx-auto mt-6 sm:mt-0" src={svgQR} alt="QR" />
+          </div>
         </div>
 
-        <div className="my-16 sm:my-28 md:my-32">
+        <div className="mb-16 sm:mb-28 md:mb-32 mt-8">
           <h2 className="text-bittersweetShimmer text-center sm:text-left text-4xl sm:text-5xl md:text-6xl font-semibold mb-6">
             Grupo 2 - Blackjack App
           </h2>
@@ -46,12 +43,12 @@ export const HomeScreen = () => {
           </div>
         </div>
 
-        <div className="flex justify-center text-4xl sm:text-5xl my-10">
+        <div className="flex justify-center text-center text-4xl sm:text-5xl my-10">
           <Link
             className="text-bittersweetShimmer hover:text-red-500 underline hover:underline-offset-4 font-medium"
             to="/aprender-a-jugar"
           >
-            ENTRAR
+            APRENDER A JUGAR
           </Link>
         </div>
 
