@@ -28,7 +28,7 @@ export const AboutUsScreen = () => {
                   <a
                     className="rounded px-3 py-2 m-1 shadow-lg bg-bittersweetShimmer hover:bg-red-500"
                     aria-label="Ir a GitHub de Giuliano Conti"
-                    href="https://github.com/GiuliannT"
+                    href="https://github.com/giulianoconti"
                     target="_blank"
                     rel="noreferrer"
                   >
