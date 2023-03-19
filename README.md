@@ -21,6 +21,7 @@ El Blackjack es un juego de habilidad y estrategia, y los jugadores pueden mejor
 
 * [React](https://reactjs.org/)
 * [Firebase](https://firebase.google.com/)
+* [Tailwind](https://tailwindcss.com/)
 
 ### Link
 
